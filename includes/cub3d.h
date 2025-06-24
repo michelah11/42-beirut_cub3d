@@ -6,7 +6,7 @@
 /*   By: mabou-ha <mabou-ha@@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 22:52:44 by mabou-ha          #+#    #+#             */
-/*   Updated: 2025/06/18 23:28:46 by mabou-ha         ###   ########.fr       */
+/*   Updated: 2025/06/25 00:25:03 by mabou-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,112 @@
 # define WIN_WIDTH 960
 # define WIN_HEIGHT 480
 
-typedef
+typedef struct s_img
+{
+	void	*img;
+	int		*addr;
+	int		pixel_bits;
+	int		size_line;
+	int		endian;
+}	t_img;
+
+typedef struct s_texinfo
+{
+	char			*north;
+	char			*south;
+	char			*west;
+	char			*east;
+	int				*floor;
+	int				*ceiling;
+	unsigned long	hex_floor;
+	unsigned long	hex_ceiling;
+	int				size;
+	int				index;
+	double			step;
+	double			pos;
+	int				x;
+	int				y;
+}	t_texinfo;
+
+typedef struct s_mapinfo
+{
+	int		fd;
+	int		line_count;
+	char	*path;
+	char	**file;
+	int		height;
+	int		width;
+	int		index_end_of_map;
+}	t_mapinfo;
+
+typedef struct s_ray
+{
+	double	camera_x;
+	double	dir_x;
+	double	dir_y;
+	int		map_x;
+	int		map_y;
+	int		step_x;
+	int		step_y;
+	double	sidedist_x;
+	double	sidedist_y;
+	double	deltadist_x;
+	double	deltadist_y;
+	double	wall_dist;
+	double	wall_x;
+	int		side;
+	int		line_height;
+	int		draw_start;
+	int		draw_end;
+}	t_ray;
+
+typedef struct s_player
+{
+	char	dir;
+	double	pos_x;
+	double	pos_y;
+	double	dir_x;
+	double	dir_y;
+	double	plane_x;
+	double	plane_y;
+	int		has_moved;
+	int		move_x;
+	int		move_y;
+	int		rotate;
+}	t_player;
+
+typedef struct s_data
+{
+	void		*mlx;
+	void		*win;
+	int			win_height;
+	int			win_width;
+	t_mapinfo	mapinfo;
+	char		**map;
+	t_player	player;
+	t_ray		ray;
+	int			**texture_pixels;
+	int			**textures;
+	t_texinfo	texinfo;
+	t_img		minimap;
+}	t_data;
+
+// src/utils/exit.c
+void	free_arr(void **arr);
+int		free_data(t_data *data);
+// src/utils/exit.c
+void	clean_exit(t_data *data, int code);
+int		quit_cub3d(t_data *data);
+// src/utils/error.c
+int		err_msg(char *detail, char *str, int code);
+// src/init/init_data.c
+void	init_img_clean(t_img *img);
+void	init_ray(t_ray *ray);
+void	init_data(t_data *data);
+// src/init/init_mlx.c
+void	init_img(t_data *data, t_img *image, int width, int height);
+void	init_texture_img(t_data *data, t_img *image, char *path);
+void	init_mlx(t_data *data);
+// src/init/init_textures.c
 
 #endif

@@ -17,8 +17,14 @@ OBJS		= $(addprefix $(OBJ_PATH), $(OBJ))
 INCLUDE = -I ./includes -I $(LIBFT_PATH) -I $(MLX_PATH)
 RM = rm -rf
 
-SRC = ./sources/
-SRC_FILES = 
+SRC = ./src/
+SRC_FILES =  	main.c
+				utils/exit.c \
+				utils/exit.c \
+				utils/error.c \
+				init/init_data.c \
+				init/init_mlx.c \
+				init/init_textures.c 
 SRCS	= $(addprefix $(SRC), $(SRC_FILES))
 
 all: $(OBJ_PATH) $(MLX) $(LIBFT) $(NAME)
@@ -30,7 +36,7 @@ $(OBJ_PATH):
 	# mkdir -p $(OBJ_PATH)/movement
 	# mkdir -p $(OBJ_PATH)/render
 	# mkdir -p $(OBJ_PATH)/debug
-	# mkdir -p $(OBJ_PATH)/exit
+	# mkdir -p $(OBJ_PATH)/utils
 
 $(OBJ_PATH)%.o: $(SRC_PATH)%.c
 	$(CC) $(CFLAGS) -c $< -o $@ $(INC)
