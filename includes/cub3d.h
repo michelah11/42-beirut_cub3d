@@ -6,7 +6,7 @@
 /*   By: mabou-ha <mabou-ha@@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 22:52:44 by mabou-ha          #+#    #+#             */
-/*   Updated: 2025/06/25 00:25:03 by mabou-ha         ###   ########.fr       */
+/*   Updated: 2025/06/25 22:07:11 by mabou-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@
 
 # define WIN_WIDTH 960
 # define WIN_HEIGHT 480
+# define TEX_SIZE 64
 
 typedef struct s_img
 {
@@ -137,5 +138,8 @@ void	init_img(t_data *data, t_img *image, int width, int height);
 void	init_texture_img(t_data *data, t_img *image, char *path);
 void	init_mlx(t_data *data);
 // src/init/init_textures.c
+void	init_texinfo(t_texinfo *tex);
+void	init_textures(t_data *data);
+
 
 #endif
