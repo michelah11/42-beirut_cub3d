@@ -1,26 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   parse_file.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mabou-ha <mabou-ha@@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/24 22:39:34 by mabou-ha          #+#    #+#             */
-/*   Updated: 2025/06/25 23:53:42 by mabou-ha         ###   ########.fr       */
+/*   Created: 2025/06/26 00:34:30 by mabou-ha          #+#    #+#             */
+/*   Updated: 2025/06/26 00:38:58 by mabou-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static int	parse_args(t_data *data, char **av)
+static int	get_nb_lines(const char *arg)
 {
-	if (check_file(av[1], true) == 1)
-		clean_exit(data, 1);
-}
-int	main(int ac, char **av)
-{
-	t_data	data;
+	int		fd;
+	int		count;
+	char	*line;
 
-	if (ac != 2)
-		return (err_msg("Usage", "./cub3d <path/to/map.cub>" ,1));
+	if (!arg)
+		return (err_msg("Argument", "is NULL", 1));
+	fd = open(arg, O_RDONLY);
+	if (fd < 0)
+		return (err_msg(arg, strerror(errno), 1));
+	count = 0;
+	line = get_next_line(fd);
+	while (line != NULL)
+	{
+		count++;
+		free(line);
+		line = get_next_line(fd);
+	}
+	close(fd);
+	return (count);
 }

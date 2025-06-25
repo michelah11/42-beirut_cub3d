@@ -6,7 +6,7 @@
 /*   By: mabou-ha <mabou-ha@@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 22:52:44 by mabou-ha          #+#    #+#             */
-/*   Updated: 2025/06/25 22:07:11 by mabou-ha         ###   ########.fr       */
+/*   Updated: 2025/06/25 23:58:52 by mabou-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,10 @@
 # define WIN_WIDTH 960
 # define WIN_HEIGHT 480
 # define TEX_SIZE 64
+
+# ifndef O_DIR
+#  define O_DIR 00200000
+# endif
 
 typedef struct s_img
 {
