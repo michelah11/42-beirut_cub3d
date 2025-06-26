@@ -6,7 +6,7 @@
 /*   By: mabou-ha <mabou-ha@@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 22:52:44 by mabou-ha          #+#    #+#             */
-/*   Updated: 2025/06/25 23:58:52 by mabou-ha         ###   ########.fr       */
+/*   Updated: 2025/06/26 17:39:12 by mabou-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,25 +125,28 @@ typedef struct s_data
 	t_img		minimap;
 }	t_data;
 
-// src/utils/exit.c
+//src/utils/exit.c
 void	free_arr(void **arr);
 int		free_data(t_data *data);
-// src/utils/exit.c
+//src/utils/exit.c
 void	clean_exit(t_data *data, int code);
 int		quit_cub3d(t_data *data);
-// src/utils/error.c
+//src/utils/error.c
 int		err_msg(char *detail, char *str, int code);
-// src/init/init_data.c
+//src/init/init_data.c
 void	init_img_clean(t_img *img);
 void	init_ray(t_ray *ray);
 void	init_data(t_data *data);
-// src/init/init_mlx.c
+//src/init/init_mlx.c
 void	init_img(t_data *data, t_img *image, int width, int height);
 void	init_texture_img(t_data *data, t_img *image, char *path);
 void	init_mlx(t_data *data);
-// src/init/init_textures.c
+//src/init/init_textures.c
 void	init_texinfo(t_texinfo *tex);
 void	init_textures(t_data *data);
+//src/parsing/validate_arg.c
+int	val_file(char *arg, bool cub_file);
+//src/parsing/
 
 
 #endif
