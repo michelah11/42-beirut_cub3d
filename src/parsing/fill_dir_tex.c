@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_data.c                                         :+:      :+:    :+:   */
+/*   fill_dir_tex.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mabou-ha <mabou-ha@@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/27 01:42:07 by mabou-ha          #+#    #+#             */
-/*   Updated: 2025/06/27 01:54:52 by mabou-ha         ###   ########.fr       */
+/*   Updated: 2025/06/30 22:41:20 by mabou-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ static char	*get_tex_path(char *line, int j)
 	return (path);
 }
 
-static int	fill_dir_tex(t_texinfo *tex, char *line, int j)
+int	fill_dir_tex(t_texinfo *tex, char *line, int j)
 {
 	if (line[j + 2] && ft_isprint(line[j + 2]))
 		return (2);

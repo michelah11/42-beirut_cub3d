@@ -6,7 +6,7 @@
 /*   By: mabou-ha <mabou-ha@@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 22:52:44 by mabou-ha          #+#    #+#             */
-/*   Updated: 2025/06/26 17:39:12 by mabou-ha         ###   ########.fr       */
+/*   Updated: 2025/06/30 21:39:00 by mabou-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -146,7 +146,9 @@ void	init_texinfo(t_texinfo *tex);
 void	init_textures(t_data *data);
 //src/parsing/validate_arg.c
 int	val_file(char *arg, bool cub_file);
-//src/parsing/
+//src/parsing/fill_dir_tex.c
+int	fill_dir_tex(t_texinfo *tex, char *line, int j);
+//src/parsing/fill_col_tex.c
 
 
 #endif
