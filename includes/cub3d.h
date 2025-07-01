@@ -6,7 +6,7 @@
 /*   By: mabou-ha <mabou-ha@@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 22:52:44 by mabou-ha          #+#    #+#             */
-/*   Updated: 2025/06/30 21:39:00 by mabou-ha         ###   ########.fr       */
+/*   Updated: 2025/07/01 22:00:57 by mabou-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,23 @@
 # ifndef O_DIR
 #  define O_DIR 00200000
 # endif
+
+enum	e_output
+{
+	SUCCESS,
+	FAILURE,
+	ERROR,
+	BREAK,
+	CONTINUE
+};
+
+enum	e_texture_index
+{
+	NORTH,
+	SOUTH,
+	EAST,
+	WEST
+};
 
 typedef struct s_img
 {
