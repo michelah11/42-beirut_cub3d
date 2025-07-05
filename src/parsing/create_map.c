@@ -6,7 +6,7 @@
 /*   By: mabou-ha <mabou-ha@@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/05 18:32:58 by mabou-ha          #+#    #+#             */
-/*   Updated: 2025/07/05 19:28:14 by mabou-ha         ###   ########.fr       */
+/*   Updated: 2025/07/06 02:06:23 by mabou-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,12 +78,9 @@ static void	change_spaces(t_data *data)
 	while (data->map[i])
 	{
 		j = 0;
-		// while (white_spc(data->map[i][j]))
-		// 	j++;
-		while (data->map[i][j])
+		while (j < data->mapinfo.width - 1)
 		{
-			if (white_spc(data->map[i][j])
-				&& j != data->map[i][ft_strlen(data->map[i]) - 1])
+			if ((white_spc(data->map[i][j]) || (data->map[i][j] == '\0')))
 				data->map[i][j] = '2';
 			j++;
 		}
