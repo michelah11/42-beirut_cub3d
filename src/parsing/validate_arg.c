@@ -6,7 +6,7 @@
 /*   By: mabou-ha <mabou-ha@@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/25 23:54:24 by mabou-ha          #+#    #+#             */
-/*   Updated: 2025/06/26 00:31:58 by mabou-ha         ###   ########.fr       */
+/*   Updated: 2025/07/05 21:13:15 by mabou-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,12 @@ static bool	check_dir(char *arg)
 	int	fd;
 
 	fd = open(arg, O_DIR);
-	if (fd)
+	if (fd < 0)
 	{
-		close(fd);
-		return (true);
+		return (false);
 	}
-	return (false);
+	close(fd);
+	return (true);
 }
 
 static bool	check_file_format(char *arg, bool cub_file)
@@ -46,21 +46,21 @@ int	val_file(char *arg, bool cub_file)
 	int	fd;
 
 	if (!arg)
-		return (err_msg("Argument", "is null", 1));
+		return (err_msg("Argument", "is null", FAILURE));
 	if (check_dir(arg))
-		return (err_msg(arg, "is a directory", 1));
-	fd = open(arg, O_RDONLY);
+		return (err_msg(arg, "is a directory", FAILURE));
 	if (!check_file_format(arg, cub_file))
 	{
 		if (cub_file)
-			return (err_msg(arg, "is not a .cub file", 1));
+			return (err_msg(arg, "is not a .cub file", FAILURE));
 		else
-			return (err_msg(arg, "is not a .xpm file", 1));
+			return (err_msg(arg, "is not a .xpm file", FAILURE));
 	}
-	// if (fd < 0)
-	// 	return (err_msg(arg, strerror(errno), 1));
-	// close(fd);
-	return (0);
+	fd = open(arg, O_RDONLY);
+	if (fd < 0)
+		return (err_msg(arg, strerror(errno), FAILURE));
+	close(fd);
+	return (SUCCESS);
 }
 
 

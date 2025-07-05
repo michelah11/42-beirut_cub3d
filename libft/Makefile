@@ -18,7 +18,8 @@ FT = ft_isalpha ft_isdigit ft_isalnum ft_isascii ft_isprint \
 	ft_itoa ft_strmapi ft_striteri ft_putchar_fd ft_putstr_fd \
 	ft_putendl_fd ft_putnbr_fd insert_node delete_list msh_malloc\
 	msh_calloc msh_itoa msh_strdup msh_strjoin msh_strmapi msh_strtrim\
-	msh_substr msh_isalnum msh_isalpha msh_split ft_strcmp msh_atoi
+	msh_substr msh_isalnum msh_isalpha msh_split ft_strcmp msh_atoi \
+	get_next_line
 
 SRCS = $(addprefix $(SRCS_DIR),$(addsuffix .c, $(FT)))
 OBJS = $(addprefix $(OBJS_DIR),$(addsuffix .o, $(FT)))

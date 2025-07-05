@@ -1,63 +1,61 @@
-NAME = cub3D
-CC = cc
-CFLAGS = -Wall -Wextra -Werror -g3
+NAME       := cub3D
+CC         := cc
+CFLAGS     := -Wall -Wextra -Werror -g3
 
-MLX_PATH	= ./minilibx/
-MLX_NAME	= libmlx.a
-MLX			= $(MLX_PATH)$(MLX_NAME)
+SRC_DIR    := src
+OBJ_DIR    := objects
+LIBFT_DIR  := libft
+MLX_DIR    := minilibx
+INCLUDE    := -I includes -I $(LIBFT_DIR) -I $(MLX_DIR)
 
-LIBFT_PATH	= ./libft/
-LIBFT_NAME	= libft.a
-LIBFT		= $(LIBFT_PATH)$(LIBFT_NAME)
+SRC_FILES  := \
+	main.c \
+	utils/exit.c \
+	utils/free.c \
+	utils/error.c \
+	init/init_data.c \
+	init/init_mlx.c \
+	init/init_textures.c \
+	parsing/create_map.c \
+	parsing/fill_dir_tex.c \
+	parsing/parse_file.c \
+	parsing/validate_arg.c \
+	parsing/fill_col_tex.c \
+	parsing/get_file_data.c \
+	parsing/utils.c \
+	print_all.c
 
-OBJ_PATH	= ./objects/
-OBJ			= $(SRC:.c=.o)
-OBJS		= $(addprefix $(OBJ_PATH), $(OBJ))
+SRCS       := $(addprefix $(SRC_DIR)/, $(SRC_FILES))
+OBJS       := $(addprefix $(OBJ_DIR)/, $(SRC_FILES:.c=.o))
 
-INCLUDE = -I ./includes -I $(LIBFT_PATH) -I $(MLX_PATH)
-RM = rm -rf
+LIBFT_LIB  := $(LIBFT_DIR)/libft.a
+MLX_LIB    := $(MLX_DIR)/libmlx.a
 
-SRC = ./src/
-SRC_FILES =  	main.c
-				utils/exit.c \
-				utils/exit.c \
-				utils/error.c \
-				init/init_data.c \
-				init/init_mlx.c \
-				init/init_textures.c 
-SRCS	= $(addprefix $(SRC), $(SRC_FILES))
+LDLIBS     := $(LIBFT_LIB) $(MLX_LIB) -lX11 -lXext -lm
 
-all: $(OBJ_PATH) $(MLX) $(LIBFT) $(NAME)
+all: $(NAME)
 
-$(OBJ_PATH):
-	mkdir -p $(OBJ_PATH)
-	# mkdir -p $(OBJ_PATH)/init
-	# mkdir -p $(OBJ_PATH)/parsing
-	# mkdir -p $(OBJ_PATH)/movement
-	# mkdir -p $(OBJ_PATH)/render
-	# mkdir -p $(OBJ_PATH)/debug
-	# mkdir -p $(OBJ_PATH)/utils
+$(NAME): $(OBJS) $(LIBFT_LIB) $(MLX_LIB)
+	$(CC) $(CFLAGS) $(INCLUDE) $^ -o $@ $(LDLIBS)
 
-$(OBJ_PATH)%.o: $(SRC_PATH)%.c
-	$(CC) $(CFLAGS) -c $< -o $@ $(INC)
+$(LIBFT_LIB):
+	$(MAKE) -C $(LIBFT_DIR)
 
-$(NAME): $(OBJS)
-	$(CC) $(CFLAGS) $(OBJS) -o $@ $(INC) $(LIBFT) $(MLX) -lXext -lX11 -lm
+$(MLX_LIB):
+	$(MAKE) -C $(MLX_DIR)
 
-$(LIBFT):
-	make -C $(LIBFT_PATH)
-
-$(MLX):
-	make -C $(MLX_PATH)
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
+	@mkdir -p $(@D)
+	$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
 
 clean:
-	$(RM) $(OBJ_PATH)
-	make -C $(LIBFT_PATH) clean
-	make -C $(MLX_PATH) clean
+	rm -rf $(OBJ_DIR)
+	$(MAKE) -C $(LIBFT_DIR) clean
+	$(MAKE) -C $(MLX_DIR) clean
 
 fclean: clean
-	$(RM) $(NAME)
-	make -C $(LIBFT_PATH) fclean
+	rm -f $(NAME)
+	$(MAKE) -C $(LIBFT_DIR) fclean
 
 re: fclean all
 

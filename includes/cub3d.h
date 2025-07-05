@@ -6,7 +6,7 @@
 /*   By: mabou-ha <mabou-ha@@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 22:52:44 by mabou-ha          #+#    #+#             */
-/*   Updated: 2025/07/01 22:00:57 by mabou-ha         ###   ########.fr       */
+/*   Updated: 2025/07/05 21:11:18 by mabou-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -162,10 +162,20 @@ void	init_mlx(t_data *data);
 void	init_texinfo(t_texinfo *tex);
 void	init_textures(t_data *data);
 //src/parsing/validate_arg.c
-int	val_file(char *arg, bool cub_file);
+int		val_file(char *arg, bool cub_file);
 //src/parsing/fill_dir_tex.c
-int	fill_dir_tex(t_texinfo *tex, char *line, int j);
+int		fill_dir_tex(t_texinfo *tex, char *line, int j);
 //src/parsing/fill_col_tex.c
-
+int		fill_col_tex(t_data *data, t_texinfo *tex, char *line, int j);
+//src/parsing/fill_file_data.c
+int		get_file_data(t_data *data, char **map);
+//src/parsing/parse_file.c
+void	parse_data(char *path, t_data *data);
+//src/parsing/utils.c
+bool	white_spc(char c);
+size_t	find_largest_len(t_mapinfo *map, int i);
+//src/parsing/create_map.c
+int		create_map(t_data *data, char **file, int i);
+void	print_data(const t_data *d);
 
 #endif

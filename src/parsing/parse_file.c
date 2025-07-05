@@ -6,7 +6,7 @@
 /*   By: mabou-ha <mabou-ha@@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/26 00:34:30 by mabou-ha          #+#    #+#             */
-/*   Updated: 2025/06/30 22:41:21 by mabou-ha         ###   ########.fr       */
+/*   Updated: 2025/07/05 19:18:44 by mabou-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,10 @@ static int	get_nb_lines(const char *arg)
 	char	*line;
 
 	if (!arg)
-		return (err_msg("Argument", "is NULL", 1));
+		return (err_msg("Argument", "is NULL", FAILURE));
 	fd = open(arg, O_RDONLY);
 	if (fd < 0)
-		return (err_msg(arg, strerror(errno), 1));
+		return (err_msg((char *)arg, strerror(errno), errno));
 	count = 0;
 	line = get_next_line(fd);
 	while (line != NULL)
@@ -46,7 +46,7 @@ static void	fill_tab(int row, int col, int i, t_data *data)
 		if (!data->mapinfo.file[row])
 		{
 			err_msg(NULL, "Could not allocate memory", 0);
-			return (free_tab((void **)data->mapinfo.file));
+			return (free_arr((void **)data->mapinfo.file));
 		}
 		while (line[i] != '\0')
 			data->mapinfo.file[row][col++] = line[i++];
@@ -78,7 +78,7 @@ void	parse_data(char *path, t_data *data)
 	}
 	data->mapinfo.fd = open(path, O_RDONLY);
 	if (data->mapinfo.fd < 0)
-		err_msg(path, strerror(errno), 1);
+		err_msg(path, strerror(errno), FAILURE);
 	else
 	{
 		fill_tab(row, col, i, data);

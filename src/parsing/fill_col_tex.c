@@ -6,35 +6,36 @@
 /*   By: mabou-ha <mabou-ha@@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/30 21:28:03 by mabou-ha          #+#    #+#             */
-/*   Updated: 2025/07/01 22:01:22 by mabou-ha         ###   ########.fr       */
+/*   Updated: 2025/07/05 22:13:06 by mabou-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static bool	contains_digit(char *str)
+static bool	non_numeric_char(char *str)
 {
 	int		i;
 
 	i = 0;
-	while (str[i])
-	{
-		if (ft_isdigit(str[i++]) == 1)
-			return (true);
-	}
-	return (false);
+	while (white_spc(str[i]))
+		i++;
+	while (ft_isdigit(str[i]))
+		i++;
+	while (white_spc(str[i]))
+		i++;
+	return (str[i] != '\0');
 }
 
 static int	*convert_colors(char **rgb_colors, int *rgb)
 {
 	int		i;
 
-	i = -1;
-	while (rgb_colors[++i])
+	i = 0;
+	while (rgb_colors[i] != NULL)
 	{
-		if (!contains_digit(rgb_colors[i]))
+		if (non_numeric_char(rgb_colors[i]))
 		{
-			err_msg(NULL, "Non-numeric color component", 0);
+			err_msg(NULL, "Numeric positive color components are acceptable", 0);
 			free_arr((void **)rgb_colors);
 			free(rgb);
 			return (NULL);
@@ -47,6 +48,7 @@ static int	*convert_colors(char **rgb_colors, int *rgb)
 			free(rgb);
 			return (NULL);
 		}
+		i++;
 	}
 	free_arr((void **)rgb_colors);
 	return (rgb);
@@ -56,6 +58,8 @@ static int	*set_colors(char *line, char **rgb_split, int *rgb)
 {
 	int		count;
 
+	while (white_spc(*line))
+		line++;
 	rgb_split = ft_split(line, ',');
 	if (!rgb_split)
 	{
@@ -83,7 +87,7 @@ static int	*set_colors(char *line, char **rgb_split, int *rgb)
 
 int	fill_col_tex(t_data *data, t_texinfo *tex, char *line, int j)
 {
-	if (line[j + 1] && ft_isprint(line[j + 1]))
+	if (line[j + 1] && ft_isprint(line[j + 1]) && white_spc(line[j + 1]))
 		return (err_msg(data->mapinfo.path, "Invalid floor/ceiling colors", ERROR));
 	if (!tex->ceiling && line[j] == 'C')
 	{
@@ -95,9 +99,9 @@ int	fill_col_tex(t_data *data, t_texinfo *tex, char *line, int j)
 	{
 		tex->floor = set_colors(line + j + 1, NULL, NULL);
 		if (tex->floor == 0)
-			return (err_msg(data->mapinfo.path, "Invalid floor/ceiling colors", ERROR));
+			return (err_msg(data->mapinfo.path, "Invalid floor colors", ERROR));
 	}
-	else
-		return (err_msg(data->mapinfo.path, "Invalid ceiling color", ERROR));
+	// else
+	// 	return (err_msg(data->mapinfo.path, "Invalid floor/ceiling color11", ERROR));
 	return (SUCCESS);
 }

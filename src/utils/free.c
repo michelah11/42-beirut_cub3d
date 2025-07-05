@@ -6,7 +6,7 @@
 /*   By: mabou-ha <mabou-ha@@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/24 23:55:51 by mabou-ha          #+#    #+#             */
-/*   Updated: 2025/06/25 00:18:36 by mabou-ha         ###   ########.fr       */
+/*   Updated: 2025/07/05 19:11:19 by mabou-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,9 +50,9 @@ static void	free_map(t_data *data)
 	if (data->mapinfo.fd > 0)
 		close(data->mapinfo.fd);
 	if (data->mapinfo.file)
-		free_tab((void **)data->mapinfo.file);
+		free_arr((void **)data->mapinfo.file);
 	if (data->map)
-		free_tab((void **)data->map);
+		free_arr((void **)data->map);
 }
 
 int	free_data(t_data *data)

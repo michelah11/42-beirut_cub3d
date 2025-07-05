@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mabou-ha <mabou-ha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mabou-ha <mabou-ha@@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 23:43:32 by mabou-ha          #+#    #+#             */
-/*   Updated: 2025/03/08 19:55:10 by mabou-ha         ###   ########.fr       */
+/*   Updated: 2025/07/05 19:26:03 by mabou-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,11 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <fcntl.h>
+# include <stdio.h>
+
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 42
+# endif
 
 typedef struct s_mem
 {
@@ -91,5 +96,6 @@ int				msh_isalnum(int c);
 int				msh_isalpha(int c);
 int				ft_strcmp(char *s1, char *s2);
 long long int	msh_atoi(const char *nptr);
+char			*get_next_line(int fd);
 
 #endif

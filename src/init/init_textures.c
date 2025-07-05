@@ -6,7 +6,7 @@
 /*   By: mabou-ha <mabou-ha@@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/24 23:10:36 by mabou-ha          #+#    #+#             */
-/*   Updated: 2025/06/25 22:08:27 by mabou-ha         ###   ########.fr       */
+/*   Updated: 2025/07/05 19:12:22 by mabou-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static int	*xpm_to_img(t_data *data, char *path)
 	int		y;
 
 	init_texture_img(data, &tmp, path);
-	buffer = (1,
+	buffer = ft_calloc(1,
 			sizeof(int) * data->texinfo.size * data->texinfo.size);
 	if (!buffer)
 		clean_exit(data, err_msg(NULL, "Could not allocate memory", 1));

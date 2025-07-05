@@ -6,7 +6,7 @@
 /*   By: mabou-ha <mabou-ha@@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/27 01:42:07 by mabou-ha          #+#    #+#             */
-/*   Updated: 2025/06/30 22:41:20 by mabou-ha         ###   ########.fr       */
+/*   Updated: 2025/07/05 21:27:07 by mabou-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,16 +43,16 @@ static char	*get_tex_path(char *line, int j)
 int	fill_dir_tex(t_texinfo *tex, char *line, int j)
 {
 	if (line[j + 2] && ft_isprint(line[j + 2]))
-		return (2);
+		return (ERROR);
 	if (line[j] == 'N' && line[j + 1] == 'O' && !tex->north)
 		tex->north = get_tex_path(line, j + 2);
-	if (line[j] == 'S' && line[j + 1] == 'O' && !tex->south)
-		tex->north = get_tex_path(line, j + 2);
-	if (line[j] == 'W' && line[j + 1] == 'E' && !tex->west)
-		tex->north = get_tex_path(line, j + 2);
-	if (line[j] == 'E' && line[j + 1] == 'A' && !tex->east)
-		tex->north = get_tex_path(line, j + 2);
+	else if (line[j] == 'S' && line[j + 1] == 'O' && !tex->south)
+		tex->south = get_tex_path(line, j + 2);
+	else if (line[j] == 'W' && line[j + 1] == 'E' && !tex->west)
+		tex->west = get_tex_path(line, j + 2);
+	else if (line[j] == 'E' && line[j + 1] == 'A' && !tex->east)
+		tex->east = get_tex_path(line, j + 2);
 	else
-		return (2);
-	return (0);
+		return (ERROR);
+	return (SUCCESS);
 }
