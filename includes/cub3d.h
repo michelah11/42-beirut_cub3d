@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mabou-ha <mabou-ha@@student.42.fr>         +#+  +:+       +#+        */
+/*   By: mabou-ha <mabou-ha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 22:52:44 by mabou-ha          #+#    #+#             */
-/*   Updated: 2025/07/05 21:11:18 by mabou-ha         ###   ########.fr       */
+/*   Updated: 2025/07/07 18:26:19 by mabou-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -146,8 +146,8 @@ typedef struct s_data
 void	free_arr(void **arr);
 int		free_data(t_data *data);
 //src/utils/exit.c
-void	clean_exit(t_data *data, int code);
-int		quit_cub3d(t_data *data);
+void	clean_cub3d(t_data *data, int code);
+int		exit_cub3d(t_data *data);
 //src/utils/error.c
 int		err_msg(char *detail, char *str, int code);
 //src/init/init_data.c
@@ -176,6 +176,14 @@ bool	white_spc(char c);
 size_t	find_largest_len(t_mapinfo *map, int i);
 //src/parsing/create_map.c
 int		create_map(t_data *data, char **file, int i);
+//src/parsing/check_borders.c
+int 	check_map_borders(t_mapinfo *map, char **map_arr);
+//src/parsing/check_map.c
+int check_map(t_data *data, char **map_arr);
+//src/parsing/check_tex.c
+int		check_tex(t_data *data, t_texinfo *tex);
+//src/player/player_direction.c
+void init_player_direction(t_data *data);
 void	print_data(const t_data *d);
 
 #endif

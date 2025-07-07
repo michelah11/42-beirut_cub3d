@@ -22,7 +22,11 @@ SRC_FILES  := \
 	parsing/validate_arg.c \
 	parsing/fill_col_tex.c \
 	parsing/get_file_data.c \
+	parsing/check_borders.c \
+	parsing/check_map.c \
+	parsing/check_tex.c \
 	parsing/utils.c \
+	player/player_direction.c \
 	print_all.c
 
 SRCS       := $(addprefix $(SRC_DIR)/, $(SRC_FILES))

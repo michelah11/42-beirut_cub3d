@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_mlx.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mabou-ha <mabou-ha@@student.42.fr>         +#+  +:+       +#+        */
+/*   By: mabou-ha <mabou-ha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/24 23:10:23 by mabou-ha          #+#    #+#             */
-/*   Updated: 2025/06/25 00:30:55 by mabou-ha         ###   ########.fr       */
+/*   Updated: 2025/07/07 18:25:14 by mabou-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static void	check_img(t_data *data, t_img *image)
 {
 	if (image->img == NULL)
-		clean_exit(data, err_msg("mlx", "Could not create mlx image", 1));
+		clean_cub3d(data, err_msg("mlx", "Could not create mlx image", 1));
 	image->addr = (int *)mlx_get_data_addr(image->img, &image->pixel_bits,
 			&image->size_line, &image->endian);
 	return ;
@@ -42,8 +42,8 @@ void	init_mlx(t_data *data)
 {
 	data->mlx = mlx_init();
 	if (!data->mlx)
-		clean_exit(data, err_msg("mlx", "Could not start mlx", 1));
+		clean_cub3d(data, err_msg("mlx", "Could not start mlx", 1));
 	data->win = mlx_new_window(data->mlx, WIN_WIDTH, WIN_HEIGHT, "cub3D");
 	if (!data->win)
-		clean_exit(data, err_msg("mlx", "Could not create mlx window", 1));
+		clean_cub3d(data, err_msg("mlx", "Could not create mlx window", 1));
 }

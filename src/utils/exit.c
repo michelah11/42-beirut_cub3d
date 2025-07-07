@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exit.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mabou-ha <mabou-ha@@student.42.fr>         +#+  +:+       +#+        */
+/*   By: mabou-ha <mabou-ha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/24 23:55:55 by mabou-ha          #+#    #+#             */
-/*   Updated: 2025/06/25 00:17:53 by mabou-ha         ###   ########.fr       */
+/*   Updated: 2025/07/07 18:26:23 by mabou-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static void	destroy_disp(t_data *data)
 	return ;
 }
 
-void	clean_exit(t_data *data, int code)
+void	clean_cub3d(t_data *data, int code)
 {
 	if (!data)
 		exit(code);
@@ -32,8 +32,8 @@ void	clean_exit(t_data *data, int code)
 	exit(code);
 }
 
-int	quit_cub3d(t_data *data)
+int	exit_cub3d(t_data *data)
 {
-	clean_exit(data, 0);
+	clean_cub3d(data, 0);
 	return (0);
 }

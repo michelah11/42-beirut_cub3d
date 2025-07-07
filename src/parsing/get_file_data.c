@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_file_data.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mabou-ha <mabou-ha@@student.42.fr>         +#+  +:+       +#+        */
+/*   By: mabou-ha <mabou-ha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/30 21:28:44 by mabou-ha          #+#    #+#             */
-/*   Updated: 2025/07/05 22:26:42 by mabou-ha         ###   ########.fr       */
+/*   Updated: 2025/07/07 16:44:17 by mabou-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,17 +22,15 @@ static int	get_data(t_data *data, char **map, int i, int j)
 			&& !ft_isdigit(map[i][j + 1]))
 		{
 			if (fill_dir_tex(&data->texinfo, map[i], j) == ERROR)
-			{
 				return (err_msg(data->mapinfo.path, "Invalid texture(s)", FAILURE));
-			}
 			return (BREAK);
-		}	
+		}
 		else
 		{
 			if (fill_col_tex(data, &data->texinfo, map[i], j) == ERROR)
 				return (FAILURE);
 			return (BREAK);
-		}	
+		}
 	}
 	else if (ft_isdigit(map[i][j]))
 	{

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validate_arg.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mabou-ha <mabou-ha@@student.42.fr>         +#+  +:+       +#+        */
+/*   By: mabou-ha <mabou-ha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/25 23:54:24 by mabou-ha          #+#    #+#             */
-/*   Updated: 2025/07/05 21:13:15 by mabou-ha         ###   ########.fr       */
+/*   Updated: 2025/07/07 16:31:52 by mabou-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ static bool	check_file_format(char *arg, bool cub_file)
 		return (ft_strcmp(arg + len - 4, ".cub") == 0);
 	else
 		return (ft_strcmp(arg + len - 4, ".xpm") == 0);
-
 }
 
 int	val_file(char *arg, bool cub_file)
@@ -62,5 +61,3 @@ int	val_file(char *arg, bool cub_file)
 	close(fd);
 	return (SUCCESS);
 }
-
-
