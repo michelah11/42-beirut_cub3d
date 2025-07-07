@@ -6,7 +6,7 @@
 /*   By: mabou-ha <mabou-ha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 22:52:44 by mabou-ha          #+#    #+#             */
-/*   Updated: 2025/07/07 18:26:19 by mabou-ha         ###   ########.fr       */
+/*   Updated: 2025/07/07 18:57:56 by mabou-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,9 @@
 # define WIN_WIDTH 960
 # define WIN_HEIGHT 480
 # define TEX_SIZE 64
+
+# define MOVESPEED 0.0125
+# define ROTSPEED 0.015
 
 # ifndef O_DIR
 #  define O_DIR 00200000
@@ -179,11 +182,20 @@ int		create_map(t_data *data, char **file, int i);
 //src/parsing/check_borders.c
 int 	check_map_borders(t_mapinfo *map, char **map_arr);
 //src/parsing/check_map.c
-int check_map(t_data *data, char **map_arr);
+int 	check_map(t_data *data, char **map_arr);
 //src/parsing/check_tex.c
 int		check_tex(t_data *data, t_texinfo *tex);
+//src/player/input_handler.c   
+void	input_listener(t_data *data);
 //src/player/player_direction.c
 void init_player_direction(t_data *data);
+//src/player/player_mouvement.c
+int	move(t_data *data);
+//src/player/player_rotation.c
+int	rotate(t_data *data, double rotdir);
+//src/player/valid_position.c
+int	validate_move(t_data *data, double new_x, double new_y);
 void	print_data(const t_data *d);
+
 
 #endif

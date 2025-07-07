@@ -6,7 +6,7 @@
 /*   By: mabou-ha <mabou-ha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/24 22:39:34 by mabou-ha          #+#    #+#             */
-/*   Updated: 2025/07/07 18:25:13 by mabou-ha         ###   ########.fr       */
+/*   Updated: 2025/07/07 18:59:21 by mabou-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ int	main(int ac, char **av)
 		return (FAILURE);
 	init_mlx(&data);
 	init_textures(&data);
+	input_listener(&data);
 	print_data(&data);
 	return (SUCCESS);
 }

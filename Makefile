@@ -26,7 +26,11 @@ SRC_FILES  := \
 	parsing/check_map.c \
 	parsing/check_tex.c \
 	parsing/utils.c \
+	player/input_handler.c \
+	player/player_mouvement.c \
+	player/valid_position.c \
 	player/player_direction.c \
+	player/player_rotation.c \
 	print_all.c
 
 SRCS       := $(addprefix $(SRC_DIR)/, $(SRC_FILES))
