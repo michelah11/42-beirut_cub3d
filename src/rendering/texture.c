@@ -27,6 +27,7 @@ void	init_texture_pixels(t_data *data)
 		data->texture_pixels[i] = malloc(data->win_width * sizeof(*data->texture_pixels[i]));
 		if (!data->texture_pixels[i])
 			clean_cub3d(data, err_msg(NULL, "Cannot allocate memory", FAILURE));
+  i++;
 	}
 }
 
