@@ -31,8 +31,10 @@ SRC_FILES  := \
 	player/valid_position.c \
 	player/player_direction.c \
 	player/player_rotation.c \
-	print_all.c
-
+	rendering/raycasting.c \
+	rendering/render.c \
+	rendering/texture.c \
+	rendering/utils.c 
 SRCS       := $(addprefix $(SRC_DIR)/, $(SRC_FILES))
 OBJS       := $(addprefix $(OBJ_DIR)/, $(SRC_FILES:.c=.o))
 

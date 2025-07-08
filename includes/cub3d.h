@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mabou-ha <mabou-ha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mabou-ha <mabou-ha@@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 22:52:44 by mabou-ha          #+#    #+#             */
-/*   Updated: 2025/07/07 18:57:56 by mabou-ha         ###   ########.fr       */
+/*   Updated: 2025/07/09 00:55:49 by mabou-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include "libft.h"
 # include "mlx.h"
 # include <errno.h>
+# include <math.h>
 # include <fcntl.h>
 # include <stdbool.h>
 # include <stdio.h>
@@ -106,7 +107,7 @@ typedef struct s_ray
 	double	sidedist_y;
 	double	deltadist_x;
 	double	deltadist_y;
-	double	wall_dist;
+	double	perpwalldist;
 	double	wall_x;
 	int		side;
 	int		line_height;
@@ -195,7 +196,17 @@ int	move(t_data *data);
 int	rotate(t_data *data, double rotdir);
 //src/player/valid_position.c
 int	validate_move(t_data *data, double new_x, double new_y);
-void	print_data(const t_data *d);
+//src/rendering/utils.c
+void	set_im_pixel(t_img *image, int x, int y, int color);
+//src/rendering/raycasting.c
+int		raycasting(t_player *pl, t_data *data);
+//src/rendering/render.c
+void	render_raycast(t_data *data);
+int		render(t_data *data);
+//src/rendering/texture.c
+void	init_texture_pixels(t_data *data);
+void	update_texture_pixels(t_data *data, t_texinfo *tex, t_ray *ray, int x);
+// void	print_data(const t_data *d);
 
 
 #endif

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   player_direction.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mabou-ha <mabou-ha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mabou-ha <mabou-ha@@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 17:21:01 by mabou-ha          #+#    #+#             */
-/*   Updated: 2025/07/07 17:30:19 by mabou-ha         ###   ########.fr       */
+/*   Updated: 2025/07/08 23:21:24 by mabou-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ static void	init_player_e_dir(t_player *player)
 	return ;
 }
 
-void init_player_direction(t_data *data)
+void	init_player_direction(t_data *data)
 {
 	if (data->player.dir == 'N')
 		init_player_n_dir(&data->player);

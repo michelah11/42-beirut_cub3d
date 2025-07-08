@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_borders.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mabou-ha <mabou-ha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mabou-ha <mabou-ha@@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 15:12:24 by mabou-ha          #+#    #+#             */
-/*   Updated: 2025/07/07 16:43:33 by mabou-ha         ###   ########.fr       */
+/*   Updated: 2025/07/09 00:51:15 by mabou-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int	check_map_borders(t_mapinfo *map, char **map_arr)
 			return (err_msg(NULL, "Invalid map borders", FAILURE));
 		i++;
 	}
-	if (check_top_bot(map_arr, 0, 0) == FAILURE)
+	if (check_top_bot(map_arr, map->height - 1, 0) == FAILURE)
 		return (err_msg(NULL, "Invalid map bottom border", FAILURE));
 	return (SUCCESS);
 }

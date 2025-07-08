@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mabou-ha <mabou-ha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mabou-ha <mabou-ha@@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/24 22:39:34 by mabou-ha          #+#    #+#             */
-/*   Updated: 2025/07/07 18:59:21 by mabou-ha         ###   ########.fr       */
+/*   Updated: 2025/07/09 00:18:33 by mabou-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,9 @@ int	main(int ac, char **av)
 	init_mlx(&data);
 	init_textures(&data);
 	input_listener(&data);
-	print_data(&data);
+	render_raycast(&data);
+	// print_data(&data);
+	mlx_loop_hook(data.mlx, render, &data);
+	mlx_loop(data.mlx);
 	return (SUCCESS);
 }

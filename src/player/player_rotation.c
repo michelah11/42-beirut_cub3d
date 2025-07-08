@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rotate.c                                           :+:      :+:    :+:   */
+/*   player_rotation.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mabou-ha <mabou-ha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mabou-ha <mabou-ha@@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 18:38:36 by mabou-ha          #+#    #+#             */
-/*   Updated: 2025/07/07 18:46:17 by mabou-ha         ###   ########.fr       */
+/*   Updated: 2025/07/08 23:20:50 by mabou-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static void apply_rotation(t_data *data, double speed)
+static void	apply_rotation(t_data *data, double speed)
 {
 	t_player	*p;
 	double		old_dir_x;

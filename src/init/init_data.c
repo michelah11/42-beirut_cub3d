@@ -6,7 +6,7 @@
 /*   By: mabou-ha <mabou-ha@@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/24 22:58:29 by mabou-ha          #+#    #+#             */
-/*   Updated: 2025/06/30 22:41:22 by mabou-ha         ###   ########.fr       */
+/*   Updated: 2025/07/09 00:18:46 by mabou-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	init_ray(t_ray *ray)
 	ray->sidedist_y = 0;
 	ray->deltadist_x = 0;
 	ray->deltadist_y = 0;
-	ray->wall_dist = 0;
+	ray->perpwalldist = 0;
 	ray->wall_x = 0;
 	ray->side = 0;
 	ray->line_height = 0;
