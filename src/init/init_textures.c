@@ -6,7 +6,7 @@
 /*   By: mabou-ha <mabou-ha@@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/24 23:10:36 by mabou-ha          #+#    #+#             */
-/*   Updated: 2025/07/09 01:10:04 by mabou-ha         ###   ########.fr       */
+/*   Updated: 2025/07/09 01:25:06 by mabou-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,10 +45,10 @@ void	init_textures(t_data *data)
 	data->textures = ft_calloc(5, sizeof * data->textures);
 	if (!data->textures)
 		clean_cub3d(data, err_msg(NULL, "Could not allocate memory", 1));
-	data->textures[0] = xpm_to_img(data, data->texinfo.north);
-	data->textures[1] = xpm_to_img(data, data->texinfo.south);
-	data->textures[2] = xpm_to_img(data, data->texinfo.east);
-	data->textures[3] = xpm_to_img(data, data->texinfo.west);
+	data->textures[NORTH] = xpm_to_img(data, data->texinfo.north);
+	data->textures[SOUTH] = xpm_to_img(data, data->texinfo.south);
+	data->textures[EAST] = xpm_to_img(data, data->texinfo.east);
+	data->textures[WEST] = xpm_to_img(data, data->texinfo.west);
 }
 
 void	init_texinfo(t_texinfo *tex)
