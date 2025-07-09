@@ -6,7 +6,7 @@
 /*   By: mabou-ha <mabou-ha@@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 22:49:56 by mabou-ha          #+#    #+#             */
-/*   Updated: 2025/07/09 01:16:57 by mabou-ha         ###   ########.fr       */
+/*   Updated: 2025/07/09 19:23:33 by mabou-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,16 +18,16 @@ void	init_texture_pixels(t_data *data)
 
 	if (data->texture_pixels)
 		free_arr((void **)data->texture_pixels);
-	data->texture_pixels = malloc(data->win_height * sizeof(*data->texture_pixels));
+	data->texture_pixels = ft_calloc(data->win_width + 1, sizeof(*data->texture_pixels));
 	if (!data->texture_pixels)
 		clean_cub3d(data, err_msg(NULL, "Cannot allocate memory", FAILURE));
 	i = 0;
 	while (i < data->win_height)
 	{
-		data->texture_pixels[i] = malloc(data->win_width * sizeof(*data->texture_pixels[i]));
+		data->texture_pixels[i] = ft_calloc(data->win_width + 1, sizeof(*data->texture_pixels[i]));
 		if (!data->texture_pixels[i])
 			clean_cub3d(data, err_msg(NULL, "Cannot allocate memory", FAILURE));
-  i++;
+  		i++;
 	}
 }
 
