@@ -6,7 +6,7 @@
 /*   By: mabou-ha <mabou-ha@@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/24 23:10:23 by mabou-ha          #+#    #+#             */
-/*   Updated: 2025/07/08 22:42:20 by mabou-ha         ###   ########.fr       */
+/*   Updated: 2025/07/10 21:47:13 by mabou-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,8 @@
 static void	check_img(t_data *data, t_img *image)
 {
 	if (image->img == NULL)
-		clean_cub3d(data, err_msg("mlx", "Could not create mlx image", FAILURE));
+		clean_cub3d(data, err_msg("mlx",
+				"Could not create mlx image", FAILURE));
 	image->addr = (int *)mlx_get_data_addr(image->img, &image->pixel_bits,
 			&image->size_line, &image->endian);
 	return ;
@@ -45,5 +46,6 @@ void	init_mlx(t_data *data)
 		clean_cub3d(data, err_msg("mlx", "Could not start mlx", FAILURE));
 	data->win = mlx_new_window(data->mlx, WIN_WIDTH, WIN_HEIGHT, "cub3D");
 	if (!data->win)
-		clean_cub3d(data, err_msg("mlx", "Could not create mlx window", FAILURE));
+		clean_cub3d(data, err_msg("mlx",
+				"Could not create mlx window", FAILURE));
 }

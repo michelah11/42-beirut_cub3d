@@ -6,7 +6,7 @@
 /*   By: mabou-ha <mabou-ha@@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/26 00:34:30 by mabou-ha          #+#    #+#             */
-/*   Updated: 2025/07/05 19:18:44 by mabou-ha         ###   ########.fr       */
+/*   Updated: 2025/07/10 21:45:05 by mabou-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,8 @@ void	parse_data(char *path, t_data *data)
 	col = 0;
 	data->mapinfo.line_count = get_nb_lines(path);
 	data->mapinfo.path = path;
-	data->mapinfo.file = ft_calloc(data->mapinfo.line_count + 1, sizeof(char *));
+	data->mapinfo.file = ft_calloc(data->mapinfo.line_count + 1,
+			sizeof(char *));
 	if (!(data->mapinfo.file))
 	{
 		err_msg(NULL, "Could not allocate memory", 0);

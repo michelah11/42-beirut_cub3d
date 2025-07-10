@@ -6,7 +6,7 @@
 /*   By: mabou-ha <mabou-ha@@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 22:14:24 by mabou-ha          #+#    #+#             */
-/*   Updated: 2025/07/09 00:21:27 by mabou-ha         ###   ########.fr       */
+/*   Updated: 2025/07/09 21:42:01 by mabou-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static void	set_frame_image_pixel(t_data *data, t_img *image, int x, int y)
 		set_im_pixel(image, x, y, data->texture_pixels[y][x]);
 	else if (y < data->win_height / 2)
 		set_im_pixel(image, x, y, data->texinfo.hex_ceiling);
-	else if (y < data->win_height -1)
+	else if (y < data->win_height - 1)
 		set_im_pixel(image, x, y, data->texinfo.hex_floor);
 }
 

@@ -6,7 +6,7 @@
 /*   By: mabou-ha <mabou-ha@@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/30 21:28:03 by mabou-ha          #+#    #+#             */
-/*   Updated: 2025/07/05 22:13:06 by mabou-ha         ###   ########.fr       */
+/*   Updated: 2025/07/10 23:18:38 by mabou-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,8 @@ static int	*convert_colors(char **rgb_colors, int *rgb)
 	{
 		if (non_numeric_char(rgb_colors[i]))
 		{
-			err_msg(NULL, "Numeric positive color components are acceptable", 0);
+			err_msg(NULL,
+				"Numeric positive color components are acceptable", 0);
 			free_arr((void **)rgb_colors);
 			free(rgb);
 			return (NULL);
@@ -54,10 +55,21 @@ static int	*convert_colors(char **rgb_colors, int *rgb)
 	return (rgb);
 }
 
-static int	*set_colors(char *line, char **rgb_split, int *rgb)
+static bool	check_w(char *str)
 {
-	int		count;
+	int	i;
 
+	i = 0;
+	while (str[i])
+	{
+		if (!white_spc(str[i++]))
+			return (false);
+	}
+	return (true);
+}
+
+static int	*set_colors(char *line, char **rgb_split, int *rgb, int count)
+{
 	while (white_spc(*line))
 		line++;
 	rgb_split = ft_split(line, ',');
@@ -67,7 +79,7 @@ static int	*set_colors(char *line, char **rgb_split, int *rgb)
 		return (NULL);
 	}
 	count = 0;
-	while (rgb_split[count])
+	while (rgb_split[count] && !check_w(rgb_split[count]))
 		count++;
 	if (count != 3)
 	{
@@ -88,20 +100,21 @@ static int	*set_colors(char *line, char **rgb_split, int *rgb)
 int	fill_col_tex(t_data *data, t_texinfo *tex, char *line, int j)
 {
 	if (line[j + 1] && ft_isprint(line[j + 1]) && white_spc(line[j + 1]))
-		return (err_msg(data->mapinfo.path, "Invalid floor/ceiling colors", ERROR));
+		return (err_msg(data->mapinfo.path,
+				"Invalid floor/ceiling colors", ERROR));
 	if (!tex->ceiling && line[j] == 'C')
 	{
-		tex->ceiling = set_colors(line + j + 1, NULL, NULL);
+		tex->ceiling = set_colors(line + j + 1, NULL, NULL, 0);
 		if (tex->ceiling == 0)
-			return (err_msg(data->mapinfo.path, "Invalid floor color", ERROR));
+			return (err_msg(data->mapinfo.path,
+					"Invalid floor color", ERROR));
 	}
 	else if (!tex->floor && line[j] == 'F')
 	{
-		tex->floor = set_colors(line + j + 1, NULL, NULL);
+		tex->floor = set_colors(line + j + 1, NULL, NULL, 0);
 		if (tex->floor == 0)
-			return (err_msg(data->mapinfo.path, "Invalid floor colors", ERROR));
+			return (err_msg(data->mapinfo.path,
+					"Invalid floor colors", ERROR));
 	}
-	// else
-	// 	return (err_msg(data->mapinfo.path, "Invalid floor/ceiling color11", ERROR));
 	return (SUCCESS);
 }

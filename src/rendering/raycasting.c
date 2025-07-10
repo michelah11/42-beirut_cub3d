@@ -6,7 +6,7 @@
 /*   By: mabou-ha <mabou-ha@@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 21:43:24 by mabou-ha          #+#    #+#             */
-/*   Updated: 2025/07/09 00:34:08 by mabou-ha         ###   ########.fr       */
+/*   Updated: 2025/07/09 23:17:26 by mabou-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static void	init_raycasting(int x, t_ray *ray, t_player *pl)
 {
 	init_ray(ray);
-	ray->camera_x = 2 * x / (double)WIN_WIDTH - 1;
+	ray->camera_x = 2.5 * x / (double)WIN_WIDTH - 1;
 	ray->dir_x = pl->dir_x + pl->plane_x * ray->camera_x;
 	ray->dir_y = pl->dir_y + pl->plane_y * ray->camera_x;
 	ray->map_x = (int)pl->pos_x;
@@ -40,7 +40,7 @@ static void	set_dda(t_ray *ray, t_player *pl)
 	else
 	{
 		ray->step_x = 1;
-		ray->sidedist_x = (pl->pos_x + 1.0 - ray->map_x) * ray->deltadist_x;
+		ray->sidedist_x = (ray->map_x + 1.0 - pl->pos_x) * ray->deltadist_x;
 	}
 	if (ray->dir_y < 0)
 	{
@@ -50,7 +50,7 @@ static void	set_dda(t_ray *ray, t_player *pl)
 	else
 	{
 		ray->step_y = 1;
-		ray->sidedist_y = (pl->pos_y + 1.0 - ray->map_y) * ray->deltadist_y;
+		ray->sidedist_y = (ray->map_y + 1.0 - pl->pos_y) * ray->deltadist_y;
 	}
 }
 

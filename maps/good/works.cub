@@ -1,17 +1,17 @@
-   WE                            textures/wolfenstein/grey_stone.xpm
-NO      textures/wolfenstein/purple_stone.xpm
+NO textures/new/north.xpm  
 
 
 
-SO textures/wolfenstein/red_brick.xpm
-
-F      17,    38,     64
-
-EA textures/wolfenstein/wood.xpm
 
 
+		F 194,      160,                   128  
 
-C 218, 234, 235
+
+SO textures/new/south.xpm  
+										WE textures/new/east.xpm  
+		EA textures/new/west.xpm  
+
+C 217,                179,119  
 
 1111111111111111111111111
 10S0110000100000000000001

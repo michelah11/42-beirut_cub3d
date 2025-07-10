@@ -6,7 +6,7 @@
 /*   By: mabou-ha <mabou-ha@@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 22:52:44 by mabou-ha          #+#    #+#             */
-/*   Updated: 2025/07/09 00:55:49 by mabou-ha         ###   ########.fr       */
+/*   Updated: 2025/07/11 00:46:44 by mabou-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,12 @@
 # include <X11/keysym.h>
 # include <X11/X.h>
 
-# define WIN_WIDTH 960
-# define WIN_HEIGHT 480
+# define WIN_WIDTH 1920
+# define WIN_HEIGHT 1080
 # define TEX_SIZE 64
 
-# define MOVESPEED 0.0125
-# define ROTSPEED 0.015
+# define MOVESPEED 0.04
+# define ROTSPEED 0.028
 
 # ifndef O_DIR
 #  define O_DIR 00200000
@@ -207,6 +207,8 @@ int		render(t_data *data);
 void	init_texture_pixels(t_data *data);
 void	update_texture_pixels(t_data *data, t_texinfo *tex, t_ray *ray, int x);
 // void	print_data(const t_data *d);
+int	check_end_file(t_mapinfo *mapinfo);
+
 
 
 #endif

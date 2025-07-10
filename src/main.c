@@ -6,7 +6,7 @@
 /*   By: mabou-ha <mabou-ha@@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/24 22:39:34 by mabou-ha          #+#    #+#             */
-/*   Updated: 2025/07/09 01:24:52 by mabou-ha         ###   ########.fr       */
+/*   Updated: 2025/07/11 00:59:33 by mabou-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,11 +36,20 @@ int	main(int ac, char **av)
 	init_data(&data);
 	if (parse_args(&data, av) != 0)
 		return (FAILURE);
+	int i = 0;
+	while (data.map[i])
+	{
+		int j = 0;
+		while (data.map[i][j])
+			printf("%c", data.map[i][j++]);
+		printf("\n");
+		i++;
+	}
+	printf("%d", data.mapinfo.index_end_of_map);
 	init_mlx(&data);
 	init_textures(&data);
 	input_listener(&data);
 	render_raycast(&data);
-	// print_data(&data);
 	mlx_loop_hook(data.mlx, render, &data);
 	mlx_loop(data.mlx);
 	return (SUCCESS);

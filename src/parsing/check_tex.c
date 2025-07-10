@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_tex.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mabou-ha <mabou-ha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mabou-ha <mabou-ha@@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 16:16:31 by mabou-ha          #+#    #+#             */
-/*   Updated: 2025/07/07 17:16:50 by mabou-ha         ###   ########.fr       */
+/*   Updated: 2025/07/10 21:47:22 by mabou-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,11 @@ static unsigned long	itohex(int	*rgb_arr)
 int	check_tex(t_data *data, t_texinfo *tex)
 {
 	if (!tex->north || !tex->south || !tex->east || !tex->west)
-		return (err_msg(data->mapinfo.path, "Missing texture(s)", FAILURE));
+		return (err_msg(data->mapinfo.path,
+				"Missing texture(s)", FAILURE));
 	if (!tex->floor || !tex->ceiling)
-		return (err_msg(data->mapinfo.path, "Missing floor/ceiling color", FAILURE));
+		return (err_msg(data->mapinfo.path,
+				"Missing floor/ceiling color", FAILURE));
 	if (val_file(tex->north, false) == FAILURE
 		|| val_file(tex->south, false) == FAILURE
 		|| val_file(tex->west, false) == FAILURE

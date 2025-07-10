@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exit.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mabou-ha <mabou-ha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mabou-ha <mabou-ha@@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/24 23:55:55 by mabou-ha          #+#    #+#             */
-/*   Updated: 2025/07/07 18:26:23 by mabou-ha         ###   ########.fr       */
+/*   Updated: 2025/07/10 21:43:55 by mabou-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,11 @@ void	clean_cub3d(t_data *data, int code)
 	if (!data)
 		exit(code);
 	if (data->win && data->mlx)
+	{
+		mlx_clear_window(data->mlx, data->win);
 		mlx_destroy_window(data->mlx, data->win);
+		data->win = NULL;
+	}
 	if (data->mlx)
 		destroy_disp(data);
 	free_data(data);

@@ -6,7 +6,7 @@
 /*   By: mabou-ha <mabou-ha@@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/24 22:58:29 by mabou-ha          #+#    #+#             */
-/*   Updated: 2025/07/09 00:18:46 by mabou-ha         ###   ########.fr       */
+/*   Updated: 2025/07/10 21:52:09 by mabou-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,6 @@ void	init_data(t_data *data)
 	data->map = NULL;
 	init_mapinfo(&data->mapinfo);
 	init_img_clean(&data->minimap);
-	// data->ray;
 	data->texture_pixels = NULL;
 	data->textures = NULL;
 }

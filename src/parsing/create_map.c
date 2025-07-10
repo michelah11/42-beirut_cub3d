@@ -6,7 +6,7 @@
 /*   By: mabou-ha <mabou-ha@@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/05 18:32:58 by mabou-ha          #+#    #+#             */
-/*   Updated: 2025/07/06 02:06:23 by mabou-ha         ###   ########.fr       */
+/*   Updated: 2025/07/11 01:00:59 by mabou-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static int	count_lines(t_data *data, char **file, int i)
 		j = 0;
 		while (white_spc(file[i][j]))
 			j++;
-		if (file[i][j] != '1')
+		if (!ft_strchr("10NNSEW", file[i][j]))
 			break ;
 		i++;
 	}
@@ -92,6 +92,8 @@ int	create_map(t_data *data, char **file, int i)
 {
 	if (get_map(data, file, i) == FAILURE)
 		return (FAILURE);
+	// if (check_end_file(&data->mapinfo) == FAILURE)
+	// 		return (FAILURE);
 	change_spaces(data);
 	return (SUCCESS);
 }

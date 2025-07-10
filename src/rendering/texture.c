@@ -6,7 +6,7 @@
 /*   By: mabou-ha <mabou-ha@@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 22:49:56 by mabou-ha          #+#    #+#             */
-/*   Updated: 2025/07/09 19:23:33 by mabou-ha         ###   ########.fr       */
+/*   Updated: 2025/07/10 21:44:39 by mabou-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,16 +18,18 @@ void	init_texture_pixels(t_data *data)
 
 	if (data->texture_pixels)
 		free_arr((void **)data->texture_pixels);
-	data->texture_pixels = ft_calloc(data->win_width + 1, sizeof(*data->texture_pixels));
+	data->texture_pixels = ft_calloc(data->win_width + 1,
+			sizeof(*data->texture_pixels));
 	if (!data->texture_pixels)
 		clean_cub3d(data, err_msg(NULL, "Cannot allocate memory", FAILURE));
 	i = 0;
 	while (i < data->win_height)
 	{
-		data->texture_pixels[i] = ft_calloc(data->win_width + 1, sizeof(*data->texture_pixels[i]));
+		data->texture_pixels[i] = ft_calloc(data->win_width + 1,
+				sizeof(*data->texture_pixels[i]));
 		if (!data->texture_pixels[i])
 			clean_cub3d(data, err_msg(NULL, "Cannot allocate memory", FAILURE));
-  		i++;
+		i++;
 	}
 }
 
@@ -56,7 +58,8 @@ void	update_texture_pixels(t_data *data, t_texinfo *tex, t_ray *ray, int x)
 
 	get_tex_index(data, ray);
 	tex->x = (int)(ray->wall_x * tex->size);
-	if ((ray->side == 0 && ray->dir_x < 0) || (ray->side == 1 && ray->dir_y > 0))
+	if ((ray->side == 0 && ray->dir_x < 0)
+		|| (ray->side == 1 && ray->dir_y > 0))
 		tex->x = tex->size - tex->x - 1;
 	tex->step = 1.0 * tex->size / ray->line_height;
 	tex->pos = (ray->draw_start - data->win_height / 2

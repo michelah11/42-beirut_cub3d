@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   input_handler.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mabou-ha <mabou-ha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mabou-ha <mabou-ha@@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 18:19:35 by mabou-ha          #+#    #+#             */
-/*   Updated: 2025/07/07 18:29:26 by mabou-ha         ###   ########.fr       */
+/*   Updated: 2025/07/10 21:22:42 by mabou-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ static int	key_release(int key, t_data *data)
 
 void	input_listener(t_data *data)
 {
-	mlx_hook(data->win, ClientMessage, NoEventMask, exit_cub3d, exit);
+	mlx_hook(data->win, ClientMessage, NoEventMask, exit_cub3d, data);
 	mlx_hook(data->win, KeyPress, KeyPressMask, key_press, data);
 	mlx_hook(data->win, KeyRelease, KeyReleaseMask, key_release, data);
 	return ;
