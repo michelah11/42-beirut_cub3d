@@ -6,7 +6,7 @@
 /*   By: mabou-ha <mabou-ha@@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 22:52:44 by mabou-ha          #+#    #+#             */
-/*   Updated: 2025/07/11 00:46:44 by mabou-ha         ###   ########.fr       */
+/*   Updated: 2025/07/12 16:02:05 by mabou-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -206,9 +206,5 @@ int		render(t_data *data);
 //src/rendering/texture.c
 void	init_texture_pixels(t_data *data);
 void	update_texture_pixels(t_data *data, t_texinfo *tex, t_ray *ray, int x);
-// void	print_data(const t_data *d);
-int	check_end_file(t_mapinfo *mapinfo);
-
-
 
 #endif

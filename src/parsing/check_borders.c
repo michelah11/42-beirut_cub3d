@@ -6,7 +6,7 @@
 /*   By: mabou-ha <mabou-ha@@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 15:12:24 by mabou-ha          #+#    #+#             */
-/*   Updated: 2025/07/11 01:05:38 by mabou-ha         ###   ########.fr       */
+/*   Updated: 2025/07/12 16:14:38 by mabou-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,20 +33,18 @@ int	check_map_borders(t_mapinfo *map, char **map_arr)
 	if (check_top_bot(map_arr, 0, 0) == FAILURE)
 		return (err_msg(NULL, "Invalid map top border", FAILURE));
 	i = 1;
-	while (i < (map->height - 1))
+	while (i < (map->height - 1) && *map_arr[i])
 	{
 		j = 0;
 		while (map_arr[i][j] == '2')
 			j++;
-		if (map_arr[i][j] != '1')
+		if (map_arr[i][j] != '\0' && map_arr[i][j] != '1')
 			return (err_msg(NULL, "Invalid map left borders", FAILURE));
 		j = ft_strlen(map_arr[i]) - 1;
 		while (map_arr[i][j] == '2')
 			j--;
-		if (map_arr[i][j] != '1')
+		if (map_arr[i][j] != '\0' && map_arr[i][j] != '1')
 			return (err_msg(NULL, "Invalid map right borders", FAILURE));
-		// if (!ft_strchr("12", map_arr[i][j]))
-		// 	return (err_msg(NULL, "Invalid map borders", FAILURE));
 		i++;
 	}
 	if (check_top_bot(map_arr, map->height - 1, 0) == FAILURE)

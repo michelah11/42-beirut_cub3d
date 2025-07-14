@@ -6,15 +6,15 @@
 /*   By: mabou-ha <mabou-ha@@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/30 21:28:44 by mabou-ha          #+#    #+#             */
-/*   Updated: 2025/07/11 01:01:13 by mabou-ha         ###   ########.fr       */
+/*   Updated: 2025/07/12 16:35:35 by mabou-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	check_end_file(t_mapinfo *mapinfo)
+static int	check_end(t_mapinfo *mapinfo)
 {
-	int 	i;
+	int		i;
 	int		j;
 
 	i = mapinfo->index_end_of_map;
@@ -24,10 +24,19 @@ int	check_end_file(t_mapinfo *mapinfo)
 		while (white_spc(mapinfo->file[i][j]))
 			j++;
 		if (ft_isprint(mapinfo->file[i][j]))
-			return (FAILURE) ;
+			return (FAILURE);
 		i++;
 	}
 	return (SUCCESS);
+}
+
+static int	check_mapend(t_data *data ,char ** map, int i)
+{
+		if (create_map(data, map, i) == 1)
+			return (err_msg(data->mapinfo.path, "Wrong map", 1));
+		if (check_end(&data->mapinfo) == 1)
+			return (err_msg(data->mapinfo.path, "map not last elem", 1));
+		return (0);
 }
 
 static int	get_data(t_data *data, char **map, int i, int j)
@@ -51,13 +60,7 @@ static int	get_data(t_data *data, char **map, int i, int j)
 		}
 	}
 	else if (ft_isdigit(map[i][j]))
-	{
-		if (create_map(data, map, i) == 1)
-			return (err_msg(data->mapinfo.path, "Map description is wrong", 1));
-		if (check_end_file(&data->mapinfo) == FAILURE)
-			return (err_msg(data->mapinfo.path, "Map is not the last elem", 1));
-		return (0);
-	}
+		return (check_mapend(data, map, i));
 	return (4);
 }
 

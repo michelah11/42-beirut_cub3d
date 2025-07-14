@@ -6,7 +6,7 @@
 /*   By: mabou-ha <mabou-ha@@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/05 18:32:58 by mabou-ha          #+#    #+#             */
-/*   Updated: 2025/07/11 01:00:59 by mabou-ha         ###   ########.fr       */
+/*   Updated: 2025/07/12 16:24:44 by mabou-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,8 +92,6 @@ int	create_map(t_data *data, char **file, int i)
 {
 	if (get_map(data, file, i) == FAILURE)
 		return (FAILURE);
-	// if (check_end_file(&data->mapinfo) == FAILURE)
-	// 		return (FAILURE);
 	change_spaces(data);
 	return (SUCCESS);
 }
