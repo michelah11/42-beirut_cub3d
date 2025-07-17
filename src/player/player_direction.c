@@ -6,7 +6,7 @@
 /*   By: mabou-ha <mabou-ha@@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 17:21:01 by mabou-ha          #+#    #+#             */
-/*   Updated: 2025/07/08 23:21:24 by mabou-ha         ###   ########.fr       */
+/*   Updated: 2025/07/18 00:10:11 by mabou-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 static void	init_player_n_dir(t_player *player)
 {
 	player->dir_x = 0;
-	player->dir_y = 1;
-	player->plane_x = -0.66;
+	player->dir_y = -1;
+	player->plane_x = 0.66;
 	player->plane_y = 0;
 	return ;
 }
@@ -24,8 +24,8 @@ static void	init_player_n_dir(t_player *player)
 static void	init_player_s_dir(t_player *player)
 {
 	player->dir_x = 0;
-	player->dir_y = -1;
-	player->plane_x = 0.66;
+	player->dir_y = 1;
+	player->plane_x = -0.66;
 	player->plane_y = 0;
 	return ;
 }
@@ -34,8 +34,8 @@ static void	init_player_w_dir(t_player *player)
 {
 	player->dir_x = -1;
 	player->dir_y = 0;
-	player->plane_x = 0.66;
-	player->plane_y = 0;
+	player->plane_x = 0;
+	player->plane_y = -0.66;
 	return ;
 }
 

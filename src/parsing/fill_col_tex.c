@@ -6,7 +6,7 @@
 /*   By: mabou-ha <mabou-ha@@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/30 21:28:03 by mabou-ha          #+#    #+#             */
-/*   Updated: 2025/07/10 23:18:38 by mabou-ha         ###   ########.fr       */
+/*   Updated: 2025/07/17 23:20:15 by mabou-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,7 @@ static int	*set_colors(char *line, char **rgb_split, int *rgb, int count)
 
 int	fill_col_tex(t_data *data, t_texinfo *tex, char *line, int j)
 {
-	if (line[j + 1] && ft_isprint(line[j + 1]) && white_spc(line[j + 1]))
+	if (line[j + 1] && ft_isprint(line[j + 1]))
 		return (err_msg(data->mapinfo.path,
 				"Invalid floor/ceiling colors", ERROR));
 	if (!tex->ceiling && line[j] == 'C')
@@ -116,5 +116,8 @@ int	fill_col_tex(t_data *data, t_texinfo *tex, char *line, int j)
 			return (err_msg(data->mapinfo.path,
 					"Invalid floor colors", ERROR));
 	}
+	else
+		return (err_msg(data->mapinfo.path,
+				"Invalid floor/ceiling colors", ERROR));
 	return (SUCCESS);
 }

@@ -6,7 +6,7 @@
 /*   By: mabou-ha <mabou-ha@@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/05 18:32:58 by mabou-ha          #+#    #+#             */
-/*   Updated: 2025/07/12 16:24:44 by mabou-ha         ###   ########.fr       */
+/*   Updated: 2025/07/17 23:54:18 by mabou-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,10 +88,26 @@ static void	change_spaces(t_data *data)
 	}
 }
 
-int	create_map(t_data *data, char **file, int i)
+int	create_map(t_data *data, char **file, int index)
 {
-	if (get_map(data, file, i) == FAILURE)
+	int	i;
+	int	j;
+
+	if (get_map(data, file, index) == FAILURE)
 		return (FAILURE);
+	i = 0;
+	while (data->map[i])
+	{
+		j = 0;
+		while (data->map[i][j])
+		{
+			if (!(ft_strchr("10NSEW", data->map[i][j]))
+				&& !white_spc(data->map[i][j]))
+				return (FAILURE);
+			j++;
+		}
+		i++;
+	}
 	change_spaces(data);
 	return (SUCCESS);
 }

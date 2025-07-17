@@ -6,7 +6,7 @@
 /*   By: mabou-ha <mabou-ha@@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 15:29:37 by mabou-ha          #+#    #+#             */
-/*   Updated: 2025/07/10 21:48:54 by mabou-ha         ###   ########.fr       */
+/*   Updated: 2025/07/17 23:44:34 by mabou-ha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ static int	check_closed_map(char **map_arr, int i, int j)
 	return (SUCCESS);
 }
 
-static int	check_map_elem(t_data *data, char **map_arr, int i, int j)
+static int	check_elements(t_data *data, char **map_arr, int i, int j)
 {
 	data->player.dir = '0';
 	while (map_arr[i])
@@ -61,7 +61,7 @@ static int	check_map_elem(t_data *data, char **map_arr, int i, int j)
 	return (SUCCESS);
 }
 
-static int	check_pl_pos(t_data *data, char **map_arr)
+static int	check_player(t_data *data, char **map_arr)
 {
 	int	i;
 	int	j;
@@ -93,11 +93,11 @@ int	check_map(t_data *data, char **map_arr)
 		return (err_msg(data->mapinfo.path, "No map", FAILURE));
 	if (check_map_borders(&data->mapinfo, map_arr) == FAILURE)
 		return (FAILURE);
-	if (data->mapinfo.height < 3)
-		return (err_msg(data->mapinfo.path, "Height too small", FAILURE));
-	if (check_map_elem(data, map_arr, 0, 0) == FAILURE)
+	if (data->mapinfo.height < 3 || data->mapinfo.width < 3)
+		return (err_msg(data->mapinfo.path, "Map too small", FAILURE));
+	if (check_elements(data, map_arr, 0, 0) == FAILURE)
 		return (FAILURE);
-	if (check_pl_pos(data, map_arr) == FAILURE)
+	if (check_player(data, map_arr) == FAILURE)
 		return (FAILURE);
 	return (SUCCESS);
 }
